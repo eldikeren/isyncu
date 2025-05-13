@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Permanent+Marker&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 3.9%;
+  --foreground: 0 0% 98%;
+  --card: 0 0% 5%;
+  --card-foreground: 0 0% 98%;
+  --popover: 0 0% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 272 91% 65%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 0 0% 14.9%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 0 0% 14.9%;
+  --muted-foreground: 0 0% 63.9%;
+  --accent: 272 91% 65%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 0 0% 14.9%;
+  --input: 0 0% 14.9%;
+  --ring: 272 91% 65%;
+  --radius: 0.5rem;
+}
+
+* {
+  @apply border-border;
+}
+
+body {
+  @apply bg-background text-foreground font-sans;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Custom scrollbar for modern browsers */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-secondary/30 rounded-full;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary/70 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary;
+}
+
+/* Mobile-first responsive design */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Fix sidebar for mobile */
+  .sidebar-open {
+    width: 100%;
+    z-index: 50;
+  }
+  
+  /* Ensure content fits mobile screens */
+  main {
+    margin-left: 0 !important;
+    padding-top: 1rem;
+  }
+}
+
+/* Grunge/Modern styling */
+.font-display {
+  font-family: 'Permanent Marker', cursive;
+}
+
+.card {
+  @apply bg-card border border-border/50 shadow-md;
+  background-image: url('/grunge-texture.jpg');
+  background-blend-mode: overlay;
+  background-size: cover;
+  background-position: center;
+}
+
+.card-header {
+  @apply border-b border-border/50;
+}
+
+/* Distressed text effect for headings */
+h1, h2, h3, .card-title {
+  @apply font-display text-primary-foreground;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Button styling */
+.btn-primary {
+  @apply bg-primary text-primary-foreground hover:bg-primary/80;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary {
+  @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Grunge border effect */
+.border-grunge {
+  @apply border border-border/50;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Make sure all buttons are clickable on mobile */
+button, a {
+  @apply cursor-pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Ensure dialog content is visible on mobile */
+.dialog-content {
+  @apply max-h-[80vh] overflow-y-auto;
+}
+
+/* Fix for iOS devices */
+@supports (-webkit-touch-callout: none) {
+  .min-h-screen {
+    min-height: -webkit-fill-available;
+  }
+}
